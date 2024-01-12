@@ -1,4 +1,17 @@
-<h2>Product</h2>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias consequuntur debitis ea et explicabo fuga,
-  hic iste, laudantium molestias odio officiis pariatur placeat quas quasi, quibusdam tempora unde ut.</p>
+<div class="py-4 px-6 border rounded flex items-center flex-col mb-2">
+  <img [src]="product.image" [alt]="product.title" class="w-1/6 mb-2">
+  <h2 class="mb-2 text-md text-center">{{product.title}}</h2>
+  <p>Price: <span class="font-bold">{{product.price | currency: "BYN "}}</span></p>
+  <button class="border py-2 px-4 rounded text-white"
+          [ngClass]="{
+          'bg-emerald-950': !details,
+          'bg-fuchsia-700': details
+          }"
+          (click)="details=!details">
+    {{details ? "Hide" : "Show"}} details
+  </button>
+  <div class="py-4 px-6 rounded flex items-center flex-col mb-2" *ngIf="details">
+    <p>{{product.description}}</p>
+    <p>{{product.rating.rate}}</p>
+  </div>
+</div>

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import {ProductComponent} from "./components/pruduct/product.component";
+import {IProduct} from "./models/product";
+import {products as data} from "./data/products"
 
 @Component({
   selector: 'app-root',
@@ -12,5 +14,8 @@ import {ProductComponent} from "./components/pruduct/product.component";
 })
 
 export class AppComponent {
-  title = 'my shop';
+  title = 'my shop'
+
+
+  products: IProduct[] = data
 }
