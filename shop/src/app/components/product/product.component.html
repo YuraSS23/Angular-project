@@ -12,6 +12,6 @@
   </button>
   <div class="py-4 px-6 rounded flex items-center flex-col mb-2" *ngIf="details">
     <p>{{product.description}}</p>
-    <p>{{product.rating.rate}}</p>
+    <p>Rate: <span [ngStyle]="{fontWeight: 'bold'}">{{product.rating.rate | number: '1.2-4'}}</span></p>
   </div>
 </div>

@@ -1,6 +1,6 @@
 import {Component, Input} from "@angular/core";
 import {IProduct} from "../../models/product";
-import {CurrencyPipe, NgClass, NgIf} from "@angular/common";
+import {CurrencyPipe, DecimalPipe, NgClass, NgIf, NgStyle} from "@angular/common";
 
 @Component({
   selector: "app-product",
@@ -8,13 +8,15 @@ import {CurrencyPipe, NgClass, NgIf} from "@angular/common";
   imports: [
     CurrencyPipe,
     NgIf,
-    NgClass
+    NgClass,
+    NgStyle,
+    DecimalPipe,
   ],
   templateUrl: "./product.component.html"
 })
 
 export class ProductComponent {
   @Input() product: IProduct
-
+  @Input() ngSrc: string
   details = false
 }

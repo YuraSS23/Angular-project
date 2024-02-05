@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import {ProductComponent} from "./components/product/product.component";
 import {IProduct} from "./models/product";
-import {products as data} from "./data/products"
+import {ProductService} from "./services/product-service";
 
 @Component({
   selector: 'app-root',
@@ -13,9 +13,16 @@ import {products as data} from "./data/products"
   styleUrl: './app.component.css'
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'my shop'
+  products: IProduct[] = []
+  constructor(private productsService: ProductService) {
+  }
 
+  ngOnInit(): void {
+    this.productsService.getAll().subscribe(products=>{
+      this.products = products
+    })
+  }
 
-  products: IProduct[] = data
 }
