@@ -3,6 +3,7 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {NgIf} from "@angular/common";
 import {FocusDirective} from "../../directives/focus.directive";
 import {ModalService} from "../../services/modal.service";
+import {ProductService} from "../../services/product-service";
 
 @Component({
   selector: 'app-create-product',
@@ -17,7 +18,8 @@ import {ModalService} from "../../services/modal.service";
 })
 export class CreateProductComponent {
 
-  constructor(public modalService: ModalService) {
+  constructor(private modalService: ModalService,
+              private productService: ProductService) {
   }
 
   form = new FormGroup({
@@ -33,6 +35,19 @@ export class CreateProductComponent {
 
 
   submit() {
+    this.productService.create({
+      title: this.form.value.title as string,
+      price: 13.5,
+      description: 'lorem ipsum set',
+      image: 'https://i.pravatar.cc',
+      category: 'electronic',
+      rating: {
+        rate: 42,
+        count: 1
+      }
+    }).subscribe(()=>{
+      this.modalService.close()
+    })
     console.log(this.form.value)
   }
 
