@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
 import {FocusDirective} from "../../directives/focus.directive";
@@ -45,10 +45,9 @@ export class CreateProductComponent {
         rate: 42,
         count: 1
       }
-    }).subscribe(()=>{
+    }).subscribe(() => {
       this.modalService.close()
     })
-    console.log(this.form.value)
+    //console.log(this.form.value)
   }
-
 }
